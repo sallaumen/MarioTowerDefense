@@ -14,8 +14,8 @@ class MainWindow(QMainWindow):
         self.title = 'Mario Tower Defense'
         self.left = 150
         self.top = 150
-        self.width = 900
-        self.height = 900
+        self.width = 600
+        self.height = 600
         self.initUI()
         
     
@@ -33,13 +33,15 @@ class MainWindow(QMainWindow):
 
     def paintEvent(self, e):
         map = Map()
+        map.create_level_floor()
         self.pintarMapa(map)
 
 
     def pintarMapa(self, map):
         painter = QPainter(self)
         painter.setPen(QPen(Qt.black,  1, Qt.SolidLine))
-        
+        block_size = self.width / 30
+
         y = 0
         map_array = map.get_map()
 
@@ -48,12 +50,11 @@ class MainWindow(QMainWindow):
             for square in linha:
                 if square == map.GRASS:
                     painter.setBrush(QBrush(QColor.fromRgbF(0.2, 0.8, 0.5, 1), Qt.Dense1Pattern))
-                    painter.drawRect(x, y, 30, 30)
+                    painter.drawRect(x, y, block_size, block_size)
                 
                 elif square == map.FLOOR:
-                    painter.setBrush(QBrush(Qt.brown, Qt.SolidPattern))
-                    painter.drawRect(x, y, 30, 30)
-
-                x += 30
-            y += 30
+                    painter.setBrush(QBrush(Qt.black, Qt.SolidPattern))
+                    painter.drawRect(x, y, block_size, block_size)
+                x += block_size
+            y += block_size
             

@@ -5,6 +5,9 @@ class Tower:
         self.tower_damage = damage
         self.tower_aspd = aspd
         self.tower_attack_range = attack_range
+
+        self.tower_pos_x = 0
+        self.tower_pos_y = 0
     
 
 
@@ -21,9 +24,9 @@ class Tower:
     def get_tower_attack_range(self):
         return self.tower_attack_range
     
-
-    def set_tower_name(self, name):
-        self.tower_name = name
+    def get_tower_position(self):
+        return self.tower_pos_x, self.tower_pos_y
+    
 
     def set_tower_damage(self, damage):
         self.tower_damage = damage
@@ -33,4 +36,8 @@ class Tower:
     
     def set_tower_attack_range(self, attack_range):
         self.tower_attack_range = attack_range
+    
+    def set_tower_position(self, x, y):
+        self.tower_pos_x = x
+        self.tower_pos_y = y
 

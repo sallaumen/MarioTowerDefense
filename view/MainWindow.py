@@ -15,15 +15,21 @@ class MainWindow(QMainWindow):
         self.left = 150
         self.top = 150
         self.width = 900
-        self.height = 900
+        self.height = 950
         self.initUI()
+
+        
+        
         
     
 
     def initUI(self):
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top,self.width, self.height)
-
+        
+        lbl_player_name = QLabel("teste", self)
+        
+        
         self.show()
     
 
@@ -33,6 +39,8 @@ class MainWindow(QMainWindow):
 
     def paintEvent(self, e):
         map = Map()
+        map.create_level_floor()
+        print(map.get_map())
         self.pintarMapa(map)
 
 
@@ -40,7 +48,7 @@ class MainWindow(QMainWindow):
         painter = QPainter(self)
         painter.setPen(QPen(Qt.black,  1, Qt.SolidLine))
         
-        y = 0
+        y = 50
         map_array = map.get_map()
 
         for linha in map_array:
@@ -51,7 +59,7 @@ class MainWindow(QMainWindow):
                     painter.drawRect(x, y, 30, 30)
                 
                 elif square == map.FLOOR:
-                    painter.setBrush(QBrush(Qt.brown, Qt.SolidPattern))
+                    painter.setBrush(QBrush(QColor.fromRgbF(0.7, 0.5, 0.3, 1), Qt.SolidPattern))
                     painter.drawRect(x, y, 30, 30)
 
                 x += 30

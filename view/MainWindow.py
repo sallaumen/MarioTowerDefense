@@ -34,6 +34,8 @@ class MainWindow(QMainWindow):
     def paintEvent(self, e):
         map = Map()
         map.create_level_floor()
+
+        print(map.get_map())
         self.pintarMapa(map)
 
 
@@ -53,8 +55,8 @@ class MainWindow(QMainWindow):
                     painter.drawRect(x, y, block_size, block_size)
                 
                 elif square == map.FLOOR:
-                    painter.setBrush(QBrush(Qt.black, Qt.SolidPattern))
-                    painter.drawRect(x, y, block_size, block_size)
-                x += block_size
-            y += block_size
-            
+                    painter.setBrush(QBrush(QColor.fromRgbF(0.7, 0.5, 0.3, 1), Qt.SolidPattern))
+                    painter.drawRect(x, y, 30, 30)
+
+                x += 30
+            y += 30

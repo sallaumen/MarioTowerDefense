@@ -32,10 +32,7 @@ class MainWindow(QMainWindow):
 
 
     def paintEvent(self, e):
-
         map = Map()
-        print(map.get_map())
-
         self.pintarMapa(map)
 
 
@@ -44,7 +41,6 @@ class MainWindow(QMainWindow):
         painter.setPen(QPen(Qt.black,  1, Qt.SolidLine))
         
         y = 0
-
         map_array = map.get_map()
 
         for linha in map_array:

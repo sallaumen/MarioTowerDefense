@@ -1,7 +1,9 @@
 from test.MapTest import MapTest
+from test.ShootTest import ShootTest
 
 def tests():
-    map_test = MapTest()
-
+    MapTest()
+    ShootTest()
+    
 if __name__ == "__main__":
     tests()

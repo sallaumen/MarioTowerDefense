@@ -1,13 +1,11 @@
-from test.MapTest import MapTest
-from test.ShootTest import ShootTest
-
+import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QLabel
 from PyQt5.QtGui import QIcon, QFont, QPainter, QPen
 from PyQt5.QtCore import Qt
 
-import sys
-
-from view.MainWindow import MainWindow
+from test.MapTest import MapTest
+from test.ShootTest import ShootTest
+from controller.gameController import GameController
 
 
 def tests():
@@ -16,7 +14,6 @@ def tests():
     
 if __name__ == "__main__":
     tests()
-
     app = QApplication(sys.argv)
-    run = MainWindow()
+    run = GameController()
     sys.exit(app.exec_())

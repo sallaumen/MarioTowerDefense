@@ -19,11 +19,9 @@ class MapTest:
     def test_map_create_floor(self):
         map = Map()
         map.create_empty_map()
-        map.create_one_floor(29, 1)
+        map.create_level_floor()
         get_map = map.get_map()
-        assert get_map[29][1] == 1
-
-        assert get_map[29][1] == 1
+        assert get_map[28][3] == 1
 
     def test_create_level_floor(self):
         map = Map()

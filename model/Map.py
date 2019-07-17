@@ -3,6 +3,8 @@ import numpy as np
 class Map:
     GRASS = 0
     FLOOR = 1
+    START_GAME = 2
+    END_GAME = 3
 
     def __init__(self):
         self.lenght = 900
@@ -21,29 +23,33 @@ class Map:
         self.lenght = lenght
         self.width = width
 
-    def create_one_floor(self, pos_x, pos_y):
-        self.floor_data[pos_x][pos_y] = self.FLOOR
+    def create_level_design(self):
+        self.create_level_floor()
+
+    def __create_start(self):
+        self.floor_data[29][3] = 1
 
     def create_level_floor(self):
         if self.__game_level == 1:
             # andar pra cima
-            y_mov_1 = 28
-            for i in range(y_mov_1):
-                self.floor_data[1][1 + y_mov_1 - i] = self.FLOOR
-            # andar pra direita
+            y_mov_1 = 27
             x_mov_1 = 12
+            left_margin = 3
+
+            for i in range(y_mov_1):
+                self.floor_data[1 + y_mov_1 - i][left_margin] = self.FLOOR
+            # andar pra direita
             for i in range(x_mov_1):
-                self.floor_data[i + 1][1] = self.FLOOR
+                self.floor_data[1][i + left_margin] = self.FLOOR
             # andar pra baixo
             for i in range(y_mov_1):
-                self.floor_data[x_mov_1 + 1][1 + i] = self.FLOOR
+                self.floor_data[1 + i][x_mov_1 + left_margin] = self.FLOOR
             # andar pra direita
             for i in range(x_mov_1):
-                self.floor_data[x_mov_1 + i + 1][1 + y_mov_1] = self.FLOOR
+                self.floor_data[1 + y_mov_1][x_mov_1 + i + left_margin] = self.FLOOR
             # andar pra cima
             for i in range(y_mov_1):
-                self.floor_data[1 + x_mov_1 * 2][1 + i] = self.FLOOR
-
+                self.floor_data[1 + i][x_mov_1 * 2 + left_margin-1] = self.FLOOR
 
     def set_game_level(self, game_level):
         self.__game_level = game_level
